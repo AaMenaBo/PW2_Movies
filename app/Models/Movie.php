@@ -18,6 +18,10 @@ class Movie extends Model
     {
         return $this->belongsTo(Studio::class);
     }
+    public function hasCategory($category)
+    {
+        return $this->categories->contains($category);
+    }
     public function title(): Attribute
     {
         return Attribute::make(

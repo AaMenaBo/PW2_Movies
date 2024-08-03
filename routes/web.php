@@ -10,7 +10,8 @@ Route::get('/', [MovieController::class, 'index'])->name('movies.index');
 Route::prefix('movies')->group(function () { //Se puede agregar el auth despues 
     //Rutas de vistas
     Route::get('/create', [MovieController::class, 'create'])->name('movies.create');
-    Route::get('/{movie}/edit', [MovieController::class, 'edit'])->name('movies.edit');
+    Route::get('/edit/{movie}', [MovieController::class, 'edit'])->name('movies.edit');
+    Route::get('/show/{movie}', [MovieController::class, 'show'])->name('movies.show');
 
     //Rutas de Metodos
     Route::post('/store', [MovieController::class, 'store'])->name('movies.store');

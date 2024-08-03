@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,5 +17,18 @@ class Movie extends Model
     public function Studio()
     {
         return $this->belongsTo(Studio::class);
+    }
+    public function title(): Attribute
+    {
+        return Attribute::make(
+            get: fn (string $value) => ucfirst($value),
+            set: fn (string $value) => strtolower($value)
+        );
+    }
+    protected function casts(): array
+    {
+        return [
+            'release_date' => 'datetime:Y-m-d',
+        ];
     }
 }

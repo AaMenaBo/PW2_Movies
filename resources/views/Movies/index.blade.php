@@ -58,7 +58,7 @@
                         </ul>
                     </td>
                     <td>
-                        <a href="{{ route('movies.show') }}" class="btn btn-outline-primary">Ver Detalles</a>
+                        <a href="{{ route('movies.show', $movie->id) }}" class="btn btn-outline-primary">Ver detalles</a>
                     </td>
                 </tr>
             @endforeach

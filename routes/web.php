@@ -14,7 +14,7 @@ Route::get('/', function () {
 
 Route::prefix('movies')->group(function () {
     Route::get('/', [MovieController::class, 'index'])->name('movies.index');
-    Route::get('/show', [MovieController::class, 'show'])->name('movies.show');
+    Route::get('/movies/{movies}', [MovieController::class, 'show'])->name('movies.show');
     Route::get('/create', [MovieController::class, 'create'])->name('movies.create');
     Route::get('/edit/{movies}', [MovieController::class, 'edit'])->name('movies.edit');
     

@@ -22,13 +22,20 @@ class Movie extends Model
     {
         return $this->categories->contains($category);
     }
-    public function title(): Attribute
+    /*public function title(): Attribute
     {
         return Attribute::make(
             get: fn (string $value) => ucfirst($value),
             set: fn (string $value) => strtolower($value)
         );
     }
+    public function description(): Attribute
+    {
+        return Attribute::make(
+            get: fn (string $value) => ucfirst($value),
+            set: fn (string $value) => strtolower($value)
+        );
+    }*/
     protected function casts(): array
     {
         return [

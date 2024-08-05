@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Movie;
+use App\Models\Studio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,7 +17,9 @@ class MovieController extends Controller
     }
     public function create()
     {
-        return view('movies.create');
+        $categories = Category::all();
+        $studios = Studio::all();
+        return view('movies.create', ['categories' => $categories, 'studios' => $studios]);
     }
     public function edit(Movie $movie)
     {

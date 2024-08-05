@@ -22,6 +22,7 @@ class MovieFactory extends Factory
             'description' => substr($this->faker->paragraph(2, true), 0, 255),
             'release_date' => fake()->date('Y-m-d'),
             'studio_id' => $this->faker->numberBetween(1, Studio::count()),
+            'user_id' => 1,
         ];
     }
 }

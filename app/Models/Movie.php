@@ -18,11 +18,15 @@ class Movie extends Model
     {
         return $this->belongsTo(Studio::class);
     }
+    public function User()
+    {
+        return $this->belongsTo(User::class);
+    }
     public function hasCategory($category)
     {
         return $this->categories->contains($category);
     }
-    /*public function title(): Attribute
+    public function title(): Attribute
     {
         return Attribute::make(
             get: fn (string $value) => ucfirst($value),
@@ -35,11 +39,11 @@ class Movie extends Model
             get: fn (string $value) => ucfirst($value),
             set: fn (string $value) => strtolower($value)
         );
-    }*/
+    }
     protected function casts(): array
     {
         return [
-            'release_date' => 'datetime:Y-m-d',
+            'release_date' => 'datetime:d-m-Y',
         ];
     }
 }

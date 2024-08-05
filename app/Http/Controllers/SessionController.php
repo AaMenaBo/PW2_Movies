@@ -12,15 +12,15 @@ class SessionController extends Controller
     {
         auth()->logout();
 
-        return redirect('/movies');
+        return redirect(route('movie.index'));
     }
 
-    
+
     public function create()
     {
         return view('auth.login');
     }
-    
+
 
     public function store()
     {
@@ -29,7 +29,7 @@ class SessionController extends Controller
             'password' => 'required'
         ]);
 
-        if (!Auth::attempt($data)){
+        if (!Auth::attempt($data)) {
             throw ValidationException::withMessages([
                 'email' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
             ]);
@@ -40,4 +40,3 @@ class SessionController extends Controller
         return redirect('/movies');
     }
 }
-

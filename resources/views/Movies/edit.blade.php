@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <h1>Editando Movie: {{ $movies->title }}</h1>
+    <h1>Editando Movie: {{ $movie->title }}</h1>
     <hr>
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -11,26 +11,26 @@
             </ul>
         </div>
     @endif
-    <form action="/movies/{{ $movies->id }}" method="POST">
+    <form action="/movies/{{ $movie->id }}" method="POST">
         @csrf
         @method('PUT')
         <div>
             <label class="form-label" for="title">Título</label>
-            <input class="form-control" type="text" name="title" id="edit-title" value="{{ $movies->title }}">
+            <input class="form-control" type="text" name="title" id="edit-title" value="{{ $movie->title }}">
             @error('name')
                 <p>{{ $message }}</p>
             @enderror
         </div>
         <div>
             <label class="form-label" for="description">Descripción</label>
-            <textarea class="form-control" name="description" id="edit-description" cols="30" rows="10">{{ $movies->description }}</textarea>
+            <textarea class="form-control" name="description" id="edit-description" cols="30" rows="10">{{ $movie->description }}</textarea>
             @error('description')
                 <p>{{ $message }}</p>
             @enderror
         </div>
         <div>
             <label class="form-label" for="release_date">Fecha de lanzamiento</label>
-            <input class="form-control" type="date" name="release_date" id="edit-release_date" value="{{ $movies->release_date }}">
+            <input class="form-control" type="date" name="release_date" id="edit-release_date" value="{{ $movie->release_date }}">
             @error('release_date')
                 <p>{{ $message }}</p>
             @enderror

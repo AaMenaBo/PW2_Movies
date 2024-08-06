@@ -25,6 +25,10 @@
         </div>
     @endif
 
+    {{-- Aqui quiero poner un boton que llame a una nueva clase del blade con un listado de todas las categorias de las movies --}}
+
+    {{-- Aqui tengo planeado agregar un select? no lo tengo claro, algo para mostrar la movies de x categoría --}}
+
     <div class="table-responsive">
         <table class="table text-left">
             <thead>

@@ -12,7 +12,7 @@ class SessionController extends Controller
     {
         auth()->logout();
 
-        return redirect(route('movie.index'));
+        return redirect(route('movies.index'));
     }
 
 
@@ -37,6 +37,6 @@ class SessionController extends Controller
 
         session()->regenerate();
 
-        return redirect('/movies');
+        return redirect(route('movies.index'));
     }
 }

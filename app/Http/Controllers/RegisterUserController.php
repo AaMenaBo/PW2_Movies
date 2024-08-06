@@ -26,6 +26,6 @@ class RegisterUserController extends Controller
         auth()->login($user);
         
 
-        return redirect('/tasks');
+        return redirect(route('movies.index'));
     }
 }

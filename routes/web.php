@@ -21,7 +21,7 @@ Route::prefix('movies')->group(function () {
 
 
 Route::prefix('category')->group(function () {
-  Route::get('/{category}', [MovieController::class, 'viewByCategory'])->name('movies.genre');
+  Route::get('/{category}', [MovieController::class, 'viewByCategory'])->name('categories.index');
 });
 
 Route::prefix('studio')->group(function () {

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Studio;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,7 +18,8 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->date('release_date');
-            $table->foreignIdFor(Studio::class);
+            $table->foreignIdFor(Studio::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

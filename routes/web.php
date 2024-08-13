@@ -6,7 +6,7 @@ use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\SessionController;
 
 
-
+Route::resource('movies', MovieController::class);
 Route::get('/', [MovieController::class, 'index'])->name('movies.index');
 
 Route::get('/movies/create', [MovieController::class, 'create'])->name('movies.create');

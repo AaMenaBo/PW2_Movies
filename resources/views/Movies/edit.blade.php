@@ -46,6 +46,18 @@
                 <p>{{ $message }}</p>
             @enderror
         </div>
+        <div>
+            <label class="form-label" for="categories">Categorías</label>
+            <select class="form-select" name="categories[]" id="edit-categories" multiple>
+                @foreach ($categories as $category)
+                    <option value = "{{ $category->id }}" {{ in_array($category->id, $movie->categories->pluck('id')->toArray()) ? 'selected' : '' }}>{{ $category->name }}</option>
+                @endforeach
+            </select>
+            @error('categories')
+                <p>{{ $message }}</p>
+            @enderror
+        </div>
+    
         <button type="submit" id="edit-movie" class="btn btn-primary">Actualizar</button>
         <a href="{{ route('movies.index') }}" class="btn btn-primary">Regresar</a>
     </form>

@@ -12,7 +12,7 @@
     <h2 class="display-6 text-center mb-4">Movies</h2>
 
     @if (auth()->check())
-        <a href="/movies/create" class="btn btn-outline-primary">Agregar Peliculas</a>
+        <a href="{{route ('movies.create')}}" class="btn btn-outline-primary">Agregar Peliculas</a>
         {{-- @else
         <div class="alert alert-warning" role="alert">
             Solo los usuarios logueados pueden agregar un película.

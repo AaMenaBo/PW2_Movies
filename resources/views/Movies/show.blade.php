@@ -27,7 +27,7 @@
                 <p><strong>Studio:</strong> {{ $movie->studio->name }}</p>
                 <hr>
                 <a href="/movies/{{ $movie->id }}/edit" class="btn btn-primary">Editar</a>
-                <form action="/movies/{{ $movie->id }}" method="POST" style="display:inline;">
+                <form action="/destroy/{{ $movie->id }}" method="POST" style="display:inline;">
                     @csrf
                     @method('delete')
                     <button type="submit" class="btn btn-danger"

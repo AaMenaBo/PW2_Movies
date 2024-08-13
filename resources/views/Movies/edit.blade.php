@@ -31,7 +31,7 @@
         <div>
             <label class="form-label" for="release_date">Fecha de lanzamiento</label>
             <input class="form-control" type="date" name="release_date" id="edit-release_date"
-                value="{{ $movie->release_date }}">
+                value="{{ $movie->release_date->format('Y-m-d') }}">
             @error('release_date')
                 <p>{{ $message }}</p>
             @enderror

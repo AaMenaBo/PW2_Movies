@@ -10,8 +10,7 @@ class SessionController extends Controller
 {
     public function destroy()
     {
-        auth()->logout();
-
+        Auth::logout();
         return redirect(route('movies.index'));
     }
 

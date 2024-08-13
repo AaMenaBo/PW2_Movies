@@ -6,14 +6,17 @@ use App\Models\Category;
 use App\Models\Movie;
 use App\Models\Studio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class MovieController extends Controller
 {
     public function index()
     {
         $movies = Movie::paginate(10);
-        return view('movies.index', compact('movies'));
+        $listBy = 'all';
+        return view('movies.index', compact('movies', 'listBy'));
     }
     public function create()
     {
@@ -23,7 +26,10 @@ class MovieController extends Controller
     }
     public function edit(Movie $movie)
     {
-        return view('movies.edit', compact('movie'));
+        Gate::authorize('update', $movie);
+        $categories = Category::all();
+        $studios = Studio::all();
+        return view('movies.edit', compact('movie', 'categories', 'studios'));
     }
     public function show(Movie $movie)
     {
@@ -31,6 +37,7 @@ class MovieController extends Controller
     }
     public function store(Request $request)
     {
+        Auth::check();
         //validar
         try {
             $data = $this->validate($request);
@@ -55,6 +62,7 @@ class MovieController extends Controller
     }
     public function update(Request $request, Movie $movie)
     {
+        Gate::authorize('update', $movie);
         //validar
         try {
             $data = $this->validate($request);
@@ -71,6 +79,7 @@ class MovieController extends Controller
             $movie->categories()->sync($data['categories']);
             DB::commit();
         } catch (\Exception $e) {
+            dd($e);
             DB::rollBack();
             return redirect()->back();
         }
@@ -78,6 +87,7 @@ class MovieController extends Controller
     }
     public function destroy(Movie $movie)
     {
+        Gate::authorize('delete', $movie);
         try {
             DB::beginTransaction();
             $movie->categories()->detach();
@@ -89,13 +99,13 @@ class MovieController extends Controller
         }
         return redirect()->route('movies.index');
     }
-    public function viewByCategory($category)
+    public function viewByCategory(Category $category)
     {
         $movies = $category->movies()->paginate(10);
         $listBy = 'category';
         return view('movies.index', compact('movies', 'listBy'));
     }
-    public function viewByStudio($studio)
+    public function viewByStudio(Studio $studio)
     {
         $movies = $studio->movies()->paginate(10);
         $listBy = 'studio';

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -29,21 +30,24 @@ class Movie extends Model
     public function title(): Attribute
     {
         return Attribute::make(
-            get: fn (string $value) => ucfirst($value),
-            set: fn (string $value) => strtolower($value)
+            get: fn(string $value) => ucfirst($value),
+            set: fn(string $value) => strtolower($value)
         );
     }
     public function description(): Attribute
     {
         return Attribute::make(
-            get: fn (string $value) => ucfirst($value),
-            set: fn (string $value) => strtolower($value)
+            get: fn(string $value) => ucfirst($value),
+            set: fn(string $value) => strtolower($value)
         );
     }
     protected function casts(): array
     {
         return [
-            'release_date' => 'datetime:d-m-Y',
+            'title' => 'string',
+            'description' => 'string',
+            'release_date' => 'date',
+            'studio_id' => 'integer'
         ];
     }
 }

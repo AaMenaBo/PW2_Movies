@@ -12,7 +12,7 @@
     <h2 class="display-6 text-center mb-4">Movies</h2>
 
     @if (auth()->check())
-        <a href="{{route ('movies.create')}}" class="btn btn-outline-primary">Agregar Peliculas</a>
+        <a href="{{ route('movies.create') }}" class="btn btn-outline-primary">Agregar Peliculas</a>
         {{-- @else
         <div class="alert alert-warning" role="alert">
             Solo los usuarios logueados pueden agregar un película.
@@ -27,9 +27,9 @@
 
     {{-- listado de todas las categorias de las movies --}}
 
-    {{-- <a href="{{ route('categories.index', $category->id) }}" class="btn btn-outline-primary">Ver Categorías</a>--}}
+    {{-- <a href="{{ route('categories.index', $category->id) }}" class="btn btn-outline-primary">Ver Categorías</a> --}}
 
-   {{-- Aqui tengo planeado agregar un select? no lo tengo claro, algo para mostrar la movies de x categoría --}}
+    {{-- Aqui tengo planeado agregar un select? no lo tengo claro, algo para mostrar la movies de x categoría --}}
 
     <div class="table-responsive">
         <table class="table text-left">
@@ -52,7 +52,7 @@
                             @else
                                 No asignado
                             @endif
-                        <td>{{ $movie->release_date }}</td>
+                        <td>{{ $movie->release_date->format('Y-m-d') }}</td>
                         <td>
                             <ul>
                                 @foreach ($movie->categories as $category)

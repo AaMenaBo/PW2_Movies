@@ -15,9 +15,10 @@ class DatabaseSeeder extends Seeder
     {
 
         User::factory()->create([
-            'name' => 'Test_User',
-            'email' => 'test@example.com',
-            'password' => Hash::make('password')
+            'name' => 'Admin',
+            'email' => 'admin@admin.com',
+            'password' => Hash::make('password'),
+            'is_admin' => 1
         ]);
         User::factory(10)->create();
         $this->call([

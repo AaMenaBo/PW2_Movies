@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterUserController;
@@ -19,7 +20,13 @@ Route::put('/movies/update/{movie}', [MovieController::class, 'update'])->name('
 Route::delete('/movies/destroy/{movie}', [MovieController::class, 'destroy'])->name('movies.destroy');
 
 Route::get('/categories', [MovieController::class, 'categories'])->name('categories.index');
+Route::get('/category/create', [CategoryController::class, 'create'])->name('categories.create');
 Route::get('/category/{category}', [MovieController::class, 'viewByCategory'])->name('categories.list');
+Route::get('/category/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
+
+Route::post('/category/store', [CategoryController::class, 'store'])->name('categories.store');
+Route::put('/category/{category}/update', [CategoryController::class, 'update'])->name('categories.update');
+Route::delete('/category/{category}/delete', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
 Route::get('/studio/{studio}', [MovieController::class, 'viewByStudio'])->name('movies.studio');
 

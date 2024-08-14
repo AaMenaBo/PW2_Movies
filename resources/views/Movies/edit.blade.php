@@ -33,7 +33,7 @@
             <input class="form-control" type="date" name="release_date" id="edit-release_date"
                 value="{{ $movie->release_date->format('Y-m-d') }}">
             @error('release_date')
-                <p>{{ $message }}</p>
+                <p>{{ $message }}</p>s
             @enderror
         </div>
         <div>
@@ -61,8 +61,9 @@
                 <p>{{ $message }}</p>
             @enderror
         </div>
-
-        <button type="submit" id="edit-movie" class="btn btn-primary">Actualizar</button>
-        <a href="{{ route('movies.index') }}" class="btn btn-primary">Regresar</a>
+        <div class='pt-4'>
+            <button type="submit" id="edit-movie" class="btn btn-primary">Actualizar</button>
+            <a href="{{ route('movies.index') }}" class="btn btn-primary">Regresar</a>
+        </div>
     </form>
 @endsection

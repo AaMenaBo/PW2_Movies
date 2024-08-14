@@ -36,9 +36,9 @@
             <thead>
                 <tr>
                     <th style="width: 22%;">Nombre</th>
-                    <th style="width: 22%;">Usuario</th>
                     <th style="width: 22%;">Año de publicación</th>
                     <th style="width: 22%;">Género</th>
+                    <th style="width: 22%;">Estudio</th>
                     <th style="width: 22%;">Acciones</th>
                 </tr>
             </thead>
@@ -46,19 +46,19 @@
                 @foreach ($movies as $movie)
                     <tr>
                         <td>{{ $movie->title }}</td>
-                        <td>
-                            @if ($movie->user)
-                                {{ $movie->user->name }}
-                            @else
-                                No asignado
-                            @endif
+
                         <td>{{ $movie->release_date->format('Y-m-d') }}</td>
                         <td>
                             <ul>
                                 @foreach ($movie->categories as $category)
-                                    <li>{{ $category->name }}</li>
+                                    <li>
+                                        <a href="{{ route('categories.index', $category->id) }}">{{ $category->name }}</a>
+                                    </li>
                                 @endforeach
                             </ul>
+                        </td>
+                        <td>
+                            <a href="{{ route('movies.studio', $movie->studio_id) }}">{{ $movie->studio->name }}</a>
                         </td>
                         <td>
                             <a href="{{ route('movies.show', $movie->id) }}" class="btn btn-outline-primary">Ver
@@ -67,7 +67,9 @@
                     </tr>
                 @endforeach
             </tbody>
-
+            <div>
+                {{ $movies->links() }}
+            </div>
         </table>
     </div>
 @endsection

@@ -14,6 +14,10 @@ class MovieController extends Controller
 {
     public function index()
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+
         $movies = Movie::paginate(10);
         $listBy = 'all';
         return view('movies.index', compact('movies', 'listBy'));
@@ -48,6 +52,7 @@ class MovieController extends Controller
             $movie->description = $data['description'];
             $movie->release_date = $data['release_date'];
             $movie->studio_id = $data['studio_id'];
+            $movie->user_id = Auth::id();
             if (!$movie->save()) {
                 return redirect()->back();
             }

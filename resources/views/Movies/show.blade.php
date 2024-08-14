@@ -27,6 +27,8 @@
                     </div>
                     <p><strong>Release Date:</strong> {{ $movie->release_date->format('Y-m-d') }}</p>
                     <p><strong>Studio:</strong> {{ $movie->studio->name }}</p>
+                    {{-- parrafo para saber de quien es la movie --}}
+                    <p><strong>Creador:</strong> {{ $movie->user->name }}</p>
                     <hr>
                     @if (Gate::allows('update', $movie))
                         <a href="/movies/{{ $movie->id }}/edit" class="btn btn-primary">Editar</a>

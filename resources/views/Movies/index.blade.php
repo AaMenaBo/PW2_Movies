@@ -26,10 +26,7 @@
     @endif
 
     {{-- listado de todas las categorias de las movies --}}
-
-    {{-- <a href="{{ route('categories.index', $category->id) }}" class="btn btn-outline-primary">Ver Categorías</a> --}}
-
-    {{-- Aqui tengo planeado agregar un select? no lo tengo claro, algo para mostrar la movies de x categoría --}}
+    <a href="{{ route('categories.list') }}" class="btn btn-outline-primary">Ver Categorias</a>
 
     <div class="table-responsive">
         <table class="table text-left">

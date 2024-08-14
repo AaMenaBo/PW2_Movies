@@ -8,7 +8,7 @@
             <thead>
                 <tr>
                     <th style="width: 22%;">Nombre</th>
-                    <th style="width: 22%;">Acciones</th>
+                    <th style="width: 1%;">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,5 +24,6 @@
             </tbody>
         </table>
     </div>
+    <a href="{{ route('movies.index') }}" class="btn btn-secondary">Regresar</a>
 
 @endsection

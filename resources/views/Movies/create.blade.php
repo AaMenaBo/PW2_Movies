@@ -16,20 +16,20 @@
         @csrf
         <div>
             <label class="form-label" for="title">Título</label>
-            <input class="form-control" type="text" name="title" id="create-title" value="{{ old('title') }}">
+            <input class="form-control" type="text" name="title" id="create-title" value="{{ old('title') }}"required>
             @error('title')
                 <p>{{ $message }}</p>
             @enderror
         </div>
         <div>
             <label class="form-label" for="description">Descripción</label>
-            <textarea class="form-control" name="description" id="create-description" cols="30" rows="10">{{ old('description') }}</textarea>
+            <textarea class="form-control" name="description" id="create-description" cols="30" rows="10"required>{{ old('description') }}</textarea>
             @error('description')
                 <p>{{ $message }}</p>
             @enderror
         </div>
         <div>
-            <label class="form-label" for="release_date">Fecha de lanzamiento</label>
+            <label class="form-label" for="release_date"required>Fecha de lanzamiento</label>
             <input class="form-control" type="date" name="release_date" id="create-release_date"
                 value="{{ old('release_date') }}">
             @error('release_date')

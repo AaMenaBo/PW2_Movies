@@ -29,9 +29,9 @@
             @enderror
         </div>
         <div>
-            <label class="form-label" for="release_date"required>Fecha de lanzamiento</label>
+            <label class="form-label" for="release_date">Fecha de lanzamiento</label>
             <input class="form-control" type="date" name="release_date" id="create-release_date"
-                value="{{ old('release_date') }}">
+                value="{{ old('release_date') }}" required>
             @error('release_date')
                 <p>{{ $message }}</p>
             @enderror

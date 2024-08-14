@@ -20,6 +20,9 @@ class MovieController extends Controller
     }
     public function create()
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $categories = Category::all();
         $studios = Studio::all();
         return view('movies.create', ['categories' => $categories, 'studios' => $studios]);
@@ -37,7 +40,9 @@ class MovieController extends Controller
     }
     public function store(Request $request)
     {
-        Auth::check();
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         //validar
         try {
             $data = $this->validate($request);

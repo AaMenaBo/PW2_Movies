@@ -22,7 +22,12 @@
                     <p class="card-text">{{ $movie->description }}</p>
                     <div class="mb-3">
                         @foreach ($movie->categories as $category)
-                            <span class="badge bg-primary">{{ $category->name }}</span>
+                            <span class="badge bg-primary">
+                                <a href="{{ route('categories.list', $category->id) }}"
+                                    class="link-light link-offset-2 link-underline-opacity-0 link-underline-opacity-0-hover">
+                                    {{ $category->name }}
+                                </a>
+                            </span>
                         @endforeach
                     </div>
                     <p><strong>Release Date:</strong> {{ $movie->release_date->format('Y-m-d') }}</p>

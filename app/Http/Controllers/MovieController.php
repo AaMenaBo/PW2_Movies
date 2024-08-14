@@ -112,6 +112,11 @@ class MovieController extends Controller
         $listBy = 'studio';
         return view('movies.index', compact('movies', 'listBy'));
     }
+    public function categories()
+    {
+        $categories = Category::all();
+        return view('categories.index', compact('categories'));
+    }
     private function validate(Request $request)
     {
         return $request->validate([

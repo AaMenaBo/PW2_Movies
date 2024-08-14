@@ -18,6 +18,7 @@ Route::post('/movies/store', [MovieController::class, 'store'])->name('movies.st
 Route::put('/movies/update/{movie}', [MovieController::class, 'update'])->name('movies.update');
 Route::delete('/movies/destroy/{movie}', [MovieController::class, 'destroy'])->name('movies.destroy');
 
+Route::get('/categories', [MovieController::class, 'categories'])->name('categories.list');
 Route::get('/category/{category}', [MovieController::class, 'viewByCategory'])->name('categories.index');
 
 Route::get('/studio/{studio}', [MovieController::class, 'viewByStudio'])->name('movies.studio');

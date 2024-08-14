@@ -13,7 +13,7 @@
                 <thead>
                     <tr>
                         <th style="width: 22%;">Nombre</th>
-                        <th style="width: 1%;">Acciones</th>
+                        <th style="width: 10%;">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,6 +23,21 @@
                             <td>
                                 <a href="{{ route('categories.list', $category->id) }}" class="btn btn-outline-primary">Ver
                                     películas</a>
+
+                                @if (Gate::allows('update', $category))
+                                    <a href="{{ route('categories.edit', $category->id) }}"
+                                        class="btn btn-primary">Editar</a>
+                                @endif
+
+                                @if (Gate::allows('delete', $category))
+                                    <form action="{{ route('categories.destroy', $category->id) }}" method="POST"
+                                        style="display:inline;">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger"
+                                            onclick="return confirm('¿Estás seguro de que deseas eliminar esta tarea?')">Eliminar</button>
+                                    </form>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

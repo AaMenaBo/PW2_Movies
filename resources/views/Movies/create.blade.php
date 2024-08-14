@@ -63,7 +63,7 @@
         </div>
         <div class='pt-4'>
             <button type="submit" id="create-movie" class="btn btn-primary">Crear</button>
-            <a href="{{ route('movies.index') }}" class="btn btn-primary">Regresar</a>
+            <a href="{{ route('movies.index') }}" class="btn btn-secondary">Regresar</a>
         </div>
     </form>
 @endsection

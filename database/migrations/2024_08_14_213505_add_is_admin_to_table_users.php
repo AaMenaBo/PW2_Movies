@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\Category;
-use App\Models\Movie;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('category_movie', function (Blueprint $table) {
-            $table->id();
-            $table->foreignIdFor(Category::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(Movie::class)->constrained()->cascadeOnDelete();
+        Schema::table('users', function (Blueprint $table) {
+            $table->boolean('is_admin')->default(false);
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('category_movie');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('is_admin');
+        });
     }
 };

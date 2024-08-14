@@ -11,7 +11,7 @@
             </ul>
         </div>
     @endif
-    <form action="/categories" method="POST">
+    <form action="{{ route('categories.store') }}" method="POST">
         @csrf
         <div>
             <label class="form-label" for="name">Nombre</label>
@@ -20,4 +20,8 @@
                 <p>{{ $message }}</p>
             @enderror
         </div>
+        <div>
+            <button class="btn btn-primary mb-2 pt-2" type="submit">Crear Categoría</button>
+        </div>
+    </form>
 @endsection

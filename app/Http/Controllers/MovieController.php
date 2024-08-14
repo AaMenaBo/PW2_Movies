@@ -14,10 +14,6 @@ class MovieController extends Controller
 {
     public function index()
     {
-        if (!Auth::check()) {
-            return redirect()->route('login');
-        }
-
         $movies = Movie::paginate(10);
         $listBy = 'all';
         return view('movies.index', compact('movies', 'listBy'));

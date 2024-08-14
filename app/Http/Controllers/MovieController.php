@@ -20,6 +20,9 @@ class MovieController extends Controller
     }
     public function create()
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $categories = Category::all();
         $studios = Studio::all();
         return view('movies.create', ['categories' => $categories, 'studios' => $studios]);
@@ -37,7 +40,9 @@ class MovieController extends Controller
     }
     public function store(Request $request)
     {
-        Auth::check();
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         //validar
         try {
             $data = $this->validate($request);
@@ -48,6 +53,7 @@ class MovieController extends Controller
             $movie->description = $data['description'];
             $movie->release_date = $data['release_date'];
             $movie->studio_id = $data['studio_id'];
+            $movie->user_id = Auth::id();
             if (!$movie->save()) {
                 return redirect()->back();
             }
@@ -110,6 +116,11 @@ class MovieController extends Controller
         $movies = $studio->movies()->paginate(10);
         $listBy = 'studio';
         return view('movies.index', compact('movies', 'listBy'));
+    }
+    public function categories()
+    {
+        $categories = Category::all();
+        return view('categories.index', compact('categories'));
     }
     private function validate(Request $request)
     {

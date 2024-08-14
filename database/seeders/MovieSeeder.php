@@ -9,7 +9,7 @@ use Illuminate\Database\Seeder;
 
 class MovieSeeder extends Seeder
 {
-    private const MOVIES_COUNT = 40;
+    private const MOVIES_COUNT = 5;
     /**
      * Run the database seeds.
      */

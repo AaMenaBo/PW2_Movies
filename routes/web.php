@@ -6,7 +6,7 @@ use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\SessionController;
 
 
-
+Route::resource('movies', MovieController::class);
 Route::get('/', [MovieController::class, 'index'])->name('movies.index');
 
 Route::get('/movies/create', [MovieController::class, 'create'])->name('movies.create');
@@ -18,7 +18,8 @@ Route::post('/movies/store', [MovieController::class, 'store'])->name('movies.st
 Route::put('/movies/update/{movie}', [MovieController::class, 'update'])->name('movies.update');
 Route::delete('/movies/destroy/{movie}', [MovieController::class, 'destroy'])->name('movies.destroy');
 
-Route::get('/category/{category}', [MovieController::class, 'viewByCategory'])->name('categories.index');
+Route::get('/categories', [MovieController::class, 'categories'])->name('categories.index');
+Route::get('/category/{category}', [MovieController::class, 'viewByCategory'])->name('categories.list');
 
 Route::get('/studio/{studio}', [MovieController::class, 'viewByStudio'])->name('movies.studio');
 
